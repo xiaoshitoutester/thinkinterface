@@ -1,0 +1,14 @@
+创建user表
+CREATE TABLE `ti_user` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `username` varchar(255) NOT NULL DEFAULT '' COMMENT '用户名',
+  `name` varchar(255) NOT NULL DEFAULT '' COMMENT '姓名',
+  `phone` varchar(255) DEFAULT '' COMMENT '电话号码',
+  `email` varchar(255) DEFAULT '' COMMENT '邮箱',
+  `type` tinyint(1) NOT NULL COMMENT '用户类型',
+  `status` tinyint(1) NOT NULL DEFAULT '1' COMMENT '状态',
+  `create_time` int(20) DEFAULT NULL COMMENT '创建时间',
+  `update_time` int(20) DEFAULT NULL COMMENT '更新时间',
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
