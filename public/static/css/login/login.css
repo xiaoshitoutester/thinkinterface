@@ -1,0 +1,28 @@
+body {
+    background: rgba(0,0,0,0.6);
+}
+.content {
+    width: 400px;
+    height: 300px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    background: rgba(255,255,255,0.8);
+    margin-left: -200px;
+    margin-top: -150px;
+}
+.login_title {
+    width: 400px;
+    height: 25px;
+    text-align: center;
+}
+.login_title span {
+    height: 100%;
+    vertical-align: middle;
+    line-height: 300px;
+}
+.content hr {
+    height: 10px;
+    border: none;
+    border-top:2px dashed rgba(255,255,255,0.3);
+}
