@@ -2,6 +2,7 @@
 CREATE TABLE `ti_user` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `username` varchar(255) NOT NULL DEFAULT '' COMMENT '用户名',
+  `password` varchar(255) NOT NULL DEFAULT '123456' COMMENT '密码',
   `name` varchar(255) NOT NULL DEFAULT '' COMMENT '姓名',
   `phone` varchar(255) DEFAULT '' COMMENT '电话号码',
   `email` varchar(255) DEFAULT '' COMMENT '邮箱',
