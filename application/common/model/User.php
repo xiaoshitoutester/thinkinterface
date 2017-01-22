@@ -45,8 +45,8 @@ class User extends Model
     /*
      * 获取所有正常的用户,status = 1
      */
-    public static function getAllUser(){
-        $users = User::where(['status'=>1])->select();
+    public static function getAllUser($where){
+        $users = User::where(['status'=>1])->where($where)->select();
         return $users;
     }
 }

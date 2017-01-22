@@ -19,14 +19,14 @@
                     </div>
                     <div class="layui-input-inline">
                         <select name="type" class="layui-form-select">
-                            <option value=" ">全部</option>
+                            <option value="">全部</option>
                             <option value="0">管理员</option>
                             <option value="1">普通用户</option>
                         </select>
                     </div>
                 </div>
                 <div class="layui-form-item">
-                        <input type="submit" value="查询" class="layui-btn layui-btn-radius">
+                        <input type="submit" value="查询" class="layui-btn layui-btn-radius" onclick="searchUser()">
                         <input type="reset" value="重置" class="layui-btn layui-btn-primary layui-btn-radius">
                         <input type="button" value="新增" class="layui-btn layui-btn-radius layui-btn-normal" onclick="addUser()">
                 </div>
@@ -36,7 +36,7 @@
         <div class="table-users">
             <div class="table-info">
                 <label>总计：</label>
-                <div id="record-numbers">1</div>
+                <div id="record-numbers">{$userNumbers}</div>
             </div>
             <table class="layui-table">
                 <thead>
@@ -53,12 +53,12 @@
                 <tbody>
                     {foreach $users as $user}
                         <tr>
-                            <td>{$user->username}</td>
-                            <td>{$user->name}</td>
-                            <td>{$user->phone}</td>
-                            <td>{$user->email}</td>
-                            <td>{$user->type}</td>
-                            <td>{$user->update_time}</td>
+                            <td>{$user['username']}</td>
+                            <td>{$user['name']}</td>
+                            <td>{$user['phone']}</td>
+                            <td>{$user['email']}</td>
+                            <td>{$user['type']}</td>
+                            <td>{$user['update_time']}</td>
                             <td>
                                 <a href="#" class="layui-btn layui-btn-normal layui-btn-small layui-btn-radius"><i class="glyphicon glyphicon-pencil"></i>&nbsp;修改</a>
                                 <a href="#" class="layui-btn layui-btn-danger layui-btn-small layui-btn-radius"><i class="glyphicon glyphicon-trash"></i>&nbsp;停用</a>

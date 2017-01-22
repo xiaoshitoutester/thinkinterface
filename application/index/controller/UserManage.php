@@ -16,7 +16,8 @@ class UserManage extends Index
      */
     public function index()
     {
-        $users = UserModel::getAllUser();
+        $users = $this->readUser();
+        $this->assign('userNumbers', count($users));
         $this->assign('users', $users);
         return $this->fetch();
     }
@@ -45,5 +46,44 @@ class UserManage extends Index
         return json($res);
     }
 
+    // 私有方法根据条件，获取满足条件的所有用户
+    private function readUser($where = array()){
+        $datas = array();
+        $userModels = UserModel::getAllUser($where);
+        foreach ($userModels as $userModel){
+            $tmp = array();
+            $tmp['id'] = $userModel->id;
+            $tmp['username'] = $userModel->username;
+            $tmp['name'] = $userModel->name;
+            $tmp['phone'] = $userModel->phone;
+            $tmp['email'] = $userModel->email;
+            $tmp['type'] = $userModel->type;
+            $tmp['update_time'] = $userModel->update_time;
+            array_push($datas, $tmp);
+        }
+        return $datas;
+    }
+
+    // 用户查询
+    public function searchUser(){
+        $params = input();
+        $where = array();
+        if (!empty($params['username'])){
+            $where['username'] = trim($params['username']);
+        }
+        if (!empty($params['name'])){
+            $where['name'] = trim($params['name']);
+        }
+        if (!empty($params['phone'])){
+            $where['phone'] = trim($params['phone']);
+        }
+        if (!empty($params['type'])){
+            $where['type'] = trim($params['type']);
+        }
+        $users = $this->readUser($where);
+        $this->assign('userNumbers', count($users));
+        $this->assign('users', $users);
+        return $this->fetch();
+    }
 
 }

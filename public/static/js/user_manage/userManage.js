@@ -33,5 +33,16 @@ function addUser() {
             }
         });
     });
+}
+// 根据查询条件，查询用户
+function searchUser() {
+    $.post('searchUser',{
+        'username':$('div.search-form input[name="username"]').val(),
+        'name':$('div.search-form input[name="name"]').val(),
+        'phone':$('div.search-form input[name="phone"]').val(),
+        'type':$('div.search-form select[name="type"]').val()
+    },function (data) {
+        $('div.table-users').html(data);
+    });
 
 }
