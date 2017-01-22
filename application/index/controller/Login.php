@@ -8,8 +8,9 @@
 
 namespace app\index\controller;
 use app\common\model\User as UserModel;
+use think\Controller;
 
-class Login extends Index
+class Login extends Controller
 {
     /*
      * 登录页面

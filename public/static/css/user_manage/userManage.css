@@ -1,0 +1,18 @@
+.search-form {
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+#record-numbers {
+    display: inline-block;
+    background: green;
+    color: white;
+    border-radius: 10px;
+}
+/*新增弹框*/
+#add-layer {
+    display: none;
+}
+#add-layer label i {
+    color: red;
+}

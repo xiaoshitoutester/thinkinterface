@@ -5,5 +5,6 @@
 body {
     background-color: rgba(80,80,80,0.1);
 }
-.content {
+.g-content {
+    margin: 0 26px;
 }

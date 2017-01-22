@@ -10,17 +10,19 @@
         </div>
         <hr>
         <div class="login_form">
-            <form role="form" action="{:url('Login/doLogin')}" method="post" onsubmit="return false">
-                <div class="form-group">
-                    <input class="form-control login-input" type="text" name="username" placeholder="用户名">
-                    <input class="form-control login-input" type="password" name="password" placeholder="密码">
+            <form role="form" action="{:url('Login/doLogin')}" method="post" onsubmit="return false" class="layui-form">
+                <div class="layui-form-item">
+                    <input class="layui-input login-input" type="text" name="username" placeholder="用户名">
+                    <input class="layui-input login-input" type="password" name="password" placeholder="密码">
                 </div>
-                <div class="form-group" id="login-message">
+                <div class="layui-form-item" id="login-message">
                     <span>用户名或者密码错误</span>
                 </div>
-                <div class="form-group">
-                    <input type="submit" class="btn btn-primary login-btn" value="登录" onclick="submitLogin()">
-                    <input type="reset" class="btn btn-default login-btn" value="重置">
+                <div class="layui-form-item">
+                    <input type="submit" class="layui-btn login-btn" value="登录" onclick="submitLogin()">
+                </div>
+                <div class="layui-form-item">
+                    <input type="reset" class="layui-btn layui-btn-primary login-btn" value="重置">
                 </div>
             </form>
         </div>

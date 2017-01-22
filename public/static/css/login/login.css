@@ -36,7 +36,6 @@ body {
 .login-btn {
     width: 250px;
     margin-left: 75px;
-    margin-bottom: 10px;
 }
 #login-message {
     display: none;
