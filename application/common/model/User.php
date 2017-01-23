@@ -20,8 +20,8 @@ class User extends Model
     // type读取器
     protected function getTypeAttr($type){
         $res = [
-            0 => '管理员',
-            1 => '普通用户',
+            1 => '管理员',
+            2 => '普通用户',
         ];
         return $res[$type];
     }
