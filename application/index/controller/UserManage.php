@@ -86,4 +86,20 @@ class UserManage extends Index
         return $this->fetch();
     }
 
+    // 停用用户,将用户的status改为0
+    public function closeUser(){
+        $id = input('userid');
+        $userModel = UserModel::get($id);
+        if (!empty($userModel)){
+            $userModel->status = 0;
+            if ($userModel->save()){
+                $res['code'] = 200;
+                $res['message'] = '停用成功';
+                return json($res);
+            }
+        }
+        $res['code'] = 500;
+        $res['message'] = '停用失败';
+        return json($res);
+    }
 }

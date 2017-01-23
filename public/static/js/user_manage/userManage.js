@@ -46,3 +46,23 @@ function searchUser() {
     });
 
 }
+//停用 用户
+function closeUser(val) {
+    layui.use('layer',function () {
+        var layer = layui.layer;
+        index = layer.open({
+            title:['提示信息','text-align:center'],
+            btn:['确认','取消'],
+            btnAlign:'c',
+            content:'确认停用该用户?',
+            yes:function () {
+                $.post('closeUser',{
+                    'userid':val
+                },function (data) {
+                    layer.close(index);
+                    showMessage(data['message']);
+                })
+            }
+        });
+    })
+}

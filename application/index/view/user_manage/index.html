@@ -52,7 +52,7 @@
                 </thead>
                 <tbody>
                     {foreach $users as $user}
-                        <tr>
+                        <tr userid="{$user['id']}">
                             <td>{$user['username']}</td>
                             <td>{$user['name']}</td>
                             <td>{$user['phone']}</td>
@@ -60,8 +60,8 @@
                             <td>{$user['type']}</td>
                             <td>{$user['update_time']}</td>
                             <td>
-                                <a href="#" class="layui-btn layui-btn-normal layui-btn-small layui-btn-radius"><i class="glyphicon glyphicon-pencil"></i>&nbsp;修改</a>
-                                <a href="#" class="layui-btn layui-btn-danger layui-btn-small layui-btn-radius"><i class="glyphicon glyphicon-trash"></i>&nbsp;停用</a>
+                                <button class="layui-btn layui-btn-normal layui-btn-small layui-btn-radius">修改</button>
+                                <button class="layui-btn layui-btn-danger layui-btn-small layui-btn-radius" value="{$user['id']}" onclick="closeUser(this.value)">停用</button>
                             </td>
                         </tr>
                     {/foreach}
