@@ -53,14 +53,14 @@
                 <tbody>
                     {foreach $users as $user}
                         <tr userid="{$user['id']}">
-                            <td>{$user['username']}</td>
-                            <td>{$user['name']}</td>
-                            <td>{$user['phone']}</td>
-                            <td>{$user['email']}</td>
-                            <td>{$user['type']}</td>
+                            <td name="username">{$user['username']}</td>
+                            <td name="name">{$user['name']}</td>
+                            <td name="phone">{$user['phone']}</td>
+                            <td name="email">{$user['email']}</td>
+                            <td name="type">{$user['type']}</td>
                             <td>{$user['update_time']}</td>
                             <td>
-                                <button class="layui-btn layui-btn-normal layui-btn-small layui-btn-radius">修改</button>
+                                <button class="layui-btn layui-btn-normal layui-btn-small layui-btn-radius" value="{$user['id']}" onclick="editUser(this.value)">修改</button>
                                 <button class="layui-btn layui-btn-danger layui-btn-small layui-btn-radius" value="{$user['id']}" onclick="closeUser(this.value)">停用</button>
                             </td>
                         </tr>
@@ -94,8 +94,8 @@
             <label class="layui-form-label">角色</label>
             <div class="layui-input-inline">
                 <select class="layui-form-select" name="type">
-                    <option value="0">管理员</option>
-                    <option value="1">普通用户</option>
+                    <option value="1">管理员</option>
+                    <option value="2">普通用户</option>
                 </select>
             </div>
         </div>
@@ -111,7 +111,44 @@
                 <input class="layui-input" type="text" name="email">
             </div>
         </div>
-
+    </form>
+</div>
+<!--修改弹框-->
+<div id="edit-layer">
+    <form class="layui-form layui-form-pane">
+        <div class="layui-form-item">
+            <label class="layui-form-label">用户名<i>*</i></label>
+            <div class="layui-input-inline">
+                <input class="layui-input" type="text" name="username" readonly>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">姓名<i>*</i></label>
+            <div class="layui-input-inline">
+                <input class="layui-input" type="text" name="name">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">角色</label>
+            <div class="layui-input-inline">
+                <select class="layui-form-select" name="type">
+                    <option value="1">管理员</option>
+                    <option value="2">普通用户</option>
+                </select>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">联系方式</label>
+            <div class="layui-input-inline">
+                <input class="layui-input" type="text" name="phone">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">邮箱</label>
+            <div class="layui-input-inline">
+                <input class="layui-input" type="text" name="email">
+            </div>
+        </div>
     </form>
 </div>
 {/block}

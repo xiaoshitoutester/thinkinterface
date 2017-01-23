@@ -17,19 +17,20 @@
         </thead>
         <tbody>
         {foreach $users as $user}
-        <tr>
-            <td>{$user['username']}</td>
-            <td>{$user['name']}</td>
-            <td>{$user['phone']}</td>
-            <td>{$user['email']}</td>
-            <td>{$user['type']}</td>
+        <tr userid="{$user['id']}">
+            <td name="username">{$user['username']}</td>
+            <td name="name">{$user['name']}</td>
+            <td name="phone">{$user['phone']}</td>
+            <td name="email">{$user['email']}</td>
+            <td name="type">{$user['type']}</td>
             <td>{$user['update_time']}</td>
             <td>
-                <a href="#" class="layui-btn layui-btn-normal layui-btn-small layui-btn-radius"><i class="glyphicon glyphicon-pencil"></i>&nbsp;修改</a>
-                <a href="#" class="layui-btn layui-btn-danger layui-btn-small layui-btn-radius"><i class="glyphicon glyphicon-trash"></i>&nbsp;停用</a>
+                <button class="layui-btn layui-btn-normal layui-btn-small layui-btn-radius" value="{$user['id']}" onclick="editUser(this.value)">修改</button>
+                <button class="layui-btn layui-btn-danger layui-btn-small layui-btn-radius" value="{$user['id']}" onclick="closeUser(this.value)">停用</button>
             </td>
         </tr>
         {/foreach}
         </tbody>
     </table>
+</div>
 </div>

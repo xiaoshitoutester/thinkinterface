@@ -16,3 +16,7 @@
 #add-layer label i {
     color: red;
 }
+/*修改弹框*/
+#edit-layer {
+    display: none;
+}

@@ -66,3 +66,30 @@ function closeUser(val) {
         });
     })
 }
+// 修改用户
+function editUser(val) {
+    var userMsg = $('tr[userid="'+ val + '"]');
+    $('#edit-layer input[name="username"]').val(userMsg.find('td[name="username"]').html());
+    $('#edit-layer input[name="name"]').val(userMsg.find('td[name="name"]').html());
+    $('#edit-layer input[name="phone"]').val(userMsg.find('td[name="phone"]').html());
+    $('#edit-layer input[name="email"]').val(userMsg.find('td[name="email"]').html());
+    var userType = userMsg.find('td[name="type"]').html();
+    $("#edit-layer select option").each(function(){
+        if($(this).text()==userType)
+        {
+            $(this).attr("selected",true);
+        }
+    });
+    layui.use(['layer','form'],function () {
+       var layer = layui.layer;
+        var form = layui.form();
+        form.render();
+        index = layer.open({
+            type:1,
+           title:['修改用户','text-align:center'],
+            btn:['修改','取消'],
+            btnAlign:'c',
+            content:$('div#edit-layer')
+        });
+    });
+}
