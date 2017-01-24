@@ -8,3 +8,57 @@ body {
 .g-content {
     margin: 0 26px;
 }
+/*导航部分*/
+.nav {
+    background: #000000;
+    height: 60px;
+    margin: 0 auto;
+}
+.nav ul {
+    list-style: none;
+}
+.nav .first {
+    float: left;
+}
+.nav .first img{
+    width: 120px;
+    height: 60px;
+}
+.menu {
+    float: left;
+    line-height: 60px;
+    text-align: center;
+}
+.menu a {
+    text-decoration: none;
+    color: white;
+    display: block;
+    width: 85px;
+    height: 60px;
+    font-size: 15px;
+}
+.menu a:hover {
+    background: #0f0f0f;
+    color: green;
+}
+/*显示用户，退出*/
+.nav .last{
+    float: right;
+    line-height: 60px;
+    margin-right: 20px;
+    text-align: center;
+}
+#login_name{
+    font-size: 15px;
+    color: white;
+    display: inline;
+}
+#logout {
+    display: inline;
+    margin-left: 20px;
+}
+#logout a{
+    color: white;
+    text-decoration: none;
+}
+/*导航部分*/

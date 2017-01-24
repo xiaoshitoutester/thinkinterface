@@ -37,4 +37,13 @@ class Login extends Controller
         $res['message'] = '用户名或者密码错误';
         return json($res);
     }
+    /*
+     * 退出登录
+     */
+    public function loginOut(){
+        // 情况session
+        session('loginUser',null);
+        // 返回登录页面
+        return $this->redirect(url('Login/index'));
+    }
 }

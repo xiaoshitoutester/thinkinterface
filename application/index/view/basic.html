@@ -14,7 +14,25 @@
 </head>
 <body>
 <!--导航部分-->
-{block name="nav"}{/block}
+{block name="nav"}
+    <nav>
+        <div class="nav">
+            <ul>
+                <li class="first"><a href="{:url('UserManage/index')}"><img src="__PUBLIC__/static/img/logo.jpg"></a></li>
+                <li class="menu"><a href="{:url('UserManage/index')}">用户管理</a></li>
+                <li class="menu"><a href="{:url('AdminStudents/index')}">用例管理</a></li>
+                <li class="last">
+                    <div id="login_name">
+                        <span><i class="layui-icon">&#xe612;</i>&nbsp;{$Think.session.loginUser->name}</span>
+                    </div>
+                    <div id="logout">
+                        <a href="{:url('Login/loginOut')}"><i class="layui-icon">&#xe609;</i>&nbsp;退出</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </nav>
+{/block}
 <!--内容部分-->
 {block name="content"}{/block}
 <!--页尾部分-->
