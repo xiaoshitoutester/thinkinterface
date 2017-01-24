@@ -102,4 +102,35 @@ class UserManage extends Index
         $res['message'] = '停用失败';
         return json($res);
     }
+
+    // 修改用户信息
+    public function editUser(){
+        $id = input('userid');
+        $data = array();
+        if (!empty(input('name'))){
+            $data['name'] = input('name');
+        }
+        if (!empty(input('type'))){
+            $data['type'] = input('type');
+        }
+        if (!empty(input('phone'))){
+            $data['phone'] = input('phone');
+        }
+        if (!empty(input('email'))){
+            $data['email'] = input('email');
+        }
+        $userModel = UserModel::get($id);
+        if (!empty($userModel)){
+            // 修改成功
+            if ($userModel->save($data)){
+                $res['code'] = 200;
+                $res['message'] = '修改用户信息成功';
+                return json($res);
+            }
+        }
+        // 失败
+        $res['code'] = 500;
+        $res['message'] = '修改用户信息失败';
+        return json($res);
+    }
 }

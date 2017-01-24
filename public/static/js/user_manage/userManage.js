@@ -89,7 +89,19 @@ function editUser(val) {
            title:['修改用户','text-align:center'],
             btn:['修改','取消'],
             btnAlign:'c',
-            content:$('div#edit-layer')
+            content:$('div#edit-layer'),
+            yes:function () {
+                $.post('editUser',{
+                    'userid':val,
+                    'name':$('#edit-layer input[name="name"]').val(),
+                    'phone':$('#edit-layer input[name="phone"]').val(),
+                    'email':$('#edit-layer input[name="email"]').val(),
+                    'type':$('#edit-layer select[name="type"]').val()
+                },function (data) {
+                    layer.close(index);
+                    showMessage(data['message']);
+                });
+            }
         });
     });
 }
