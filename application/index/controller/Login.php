@@ -46,4 +46,10 @@ class Login extends Controller
         // 返回登录页面
         return $this->redirect(url('Login/index'));
     }
+
+    public function test(){
+        $res['code'] = 200;
+        $res['message'] = '登录成功';
+        return json($res);
+    }
 }

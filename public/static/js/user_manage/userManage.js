@@ -4,8 +4,19 @@
 /*页面加载完执行
  */
 $(function () {
-   layui.use('form',function () {
+   layui.use(['form','laypage'],function () {
        layui.form();
+       layui.laypage({
+           cont:'mypage',
+           pages:$('input#pageCount').val(),
+           groups:5,
+           curr:$('input#currPage').val(),
+           jump: function(e, first){ //触发分页后的回调
+               if(!first){ //一定要加此判断，否则初始时会无限刷新
+                   location.href = '?page='+e.curr;
+               }
+           }
+       });
    })
 });
 //添加用户
@@ -105,3 +116,4 @@ function editUser(val) {
         });
     });
 }
+

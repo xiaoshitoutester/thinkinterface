@@ -16,9 +16,17 @@ class UserManage extends Index
      */
     public function index()
     {
+        if (empty(input('page'))){
+            $currPage = 1;
+        }else{
+            $currPage = input('page');
+        }
         $users = $this->readUser();
+        $data = FenYe($users, 5, $currPage);
         $this->assign('userNumbers', count($users));
-        $this->assign('users', $users);
+        $this->assign('users', $data[0]);
+        $this->assign('currPage', $currPage);
+        $this->assign('pageCount',$data[1]);
         return $this->fetch();
     }
     /*

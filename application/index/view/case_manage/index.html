@@ -1,0 +1,92 @@
+{extend name="basic"}
+{block name="title"}用例管理{/block}
+{block name="css"}
+    <link rel="stylesheet" href="__PUBLIC__/static/css/case_manage/caseManage.css">
+{/block}
+{block name="content"}
+<div class="g-content">
+    <div class="left">
+        <h1>执行用例</h1>
+        <div class="add_case_form">
+            <form class="layui-form layui-form-pane" onsubmit="return false">
+                <div class="layui-form-item">
+                    <label class="layui-form-label">接口地址</label>
+                    <div class="layui-inline">
+                        <input class="layui-input" name="url" type="text" placeholder="http://www.baidu.com">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">请求方法</label>
+                    <div class="layui-input-inline">
+                        <select name="method" class="layui-selected">
+                            <option value="GET">GET</option>
+                            <option value="POST">POST</option>
+                        </select>
+                    </div>
+                    <div class="layui-input-inline">
+                        <select name="contenttype" class="layui-select">
+                            <option>application/x-www-form-urlencoded</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">请求头</label>
+                    <textarea class="layui-textarea" name="headers"></textarea>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">请求参数</label>
+                    <textarea class="layui-textarea" name="headers"></textarea>
+                </div>
+                <div class="layui-form-item">
+                    <button class="layui-btn layui-btn-radius layui-btn-small" onclick="execCase()">执行用例</button>
+                    <button class="layui-btn layui-btn-radius layui-btn-normal layui-btn-small">添加用例</button>
+                    <input type="reset" class="layui-btn layui-btn-primary layui-btn-radius layui-btn-small" value="重置用例">
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="right">
+        <h1>执行结果</h1>
+        <div class="show-result-form">
+            <form class="layui-form layui-form-pane">
+                <div class="layui-form-item">
+                    <label class="layui-form-label">返回结果</label>
+                    <textarea class="layui-textarea" id="responseResult"></textarea>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">请求头</label>
+                    <textarea class="layui-textarea" id="requestHeader"></textarea>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">响应头</label>
+                    <textarea class="layui-textarea" id="responseHeader"></textarea>
+                </div>
+                <div class="layui-form-item">
+                    <input type="reset" class="layui-btn  layui-btn-danger layui-btn-small" value="清空测试结果">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<script>
+    layui.use('form',function () {
+        layui.form();
+    });
+    var width = (window.innerWidth - 26*2)/2;
+    var height = window.innerHeight;
+    $('div.left').width(width);
+//    $('div.left').height(height);
+    $('div.right').width(width -5);
+//    $('div.right').height(height);
+    function execCase() {
+        $.post('getMyCurl',{
+            id:'1'
+        },function (data) {
+//            alert(data['request_header']);
+            $('#responseResult').html(data['responseResult']);
+            $('#requestHeader').html(data['requestHeader']);
+            $('#responseHeader').html(data['responseHeader']['content_type']);
+        });
+    }
+</script>
+{/block}
