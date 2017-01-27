@@ -83,9 +83,9 @@
             id:'1'
         },function (data) {
 //            alert(data['request_header']);
-            $('#responseResult').html(data['responseResult']);
-            $('#requestHeader').html(data['requestHeader']);
-            $('#responseHeader').html(data['responseHeader']['content_type']);
+            $('#responseResult').val(data['responseResult']);
+            $('#requestHeader').val(data['requestHeader']);
+            $('#responseHeader').val(data['responseHeader']);
         });
     }
 </script>
