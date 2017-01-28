@@ -8,7 +8,6 @@
 
 namespace app\index\controller;
 use app\common\model\Testcase as TestcasModel;
-use app\common\libs\MyCurl;
 use app\common\libs\MyRequsts;
 
 // 用例管理
@@ -18,11 +17,11 @@ class CaseManage extends Index
         return $this->fetch();
     }
 
-    //测试curl
+    // 执行测试用例
     public function getMyCurl(){
         $url = 'http://www.thinkinterface.com/index.php/index/login/test';
-        $myCurl = new MyRequsts($url,'POST');
-        $myCurl->setHeaders(array('Content-type:application/json; charset=utf-8','test:1223'));
+        $myCurl = new MyRequsts($url,'GET');
+        $myCurl->setHeaders(array());
         $myCurl->setParams(array('name'=>'admin','pwd'=>'123456'));
         $myCurl->createCurl();
         $res['responseResult'] = $myCurl->getResponseContent();
@@ -47,5 +46,52 @@ class CaseManage extends Index
             }
         }
         return $str;
+    }
+
+    // 添加测试用例
+    public function addTestCase(){
+//        $params['url'] = input('url');
+//        $params['method'] = input('method');
+//        $params['contenttype'] = input('contenttype');
+//        if (!empty(input('headers'))){
+//            $params['headers'] = $this->stringToArr(input('headers'));
+//        }
+//        if (!empty(input('params'))){
+//            $params['params'] = $this->stringToArr(input('params'));
+//        }
+//
+//        return dump($params);
+        $params['caseName'] = input('caseName');
+        $params['url'] = input('url');
+        $params['method'] = input('method');
+        $params['contenttype'] = input('contenttype');
+        $params['headers'] = input('headers');
+        $params['params'] = input('params');
+        $testcaseModel =  new TestcasModel();
+        $testcaseModel->name = $params['caseName'];
+        $testcaseModel->url = $params['url'];
+        $testcaseModel->method = $params['method'];
+        $testcaseModel->contenttype = $params['contenttype'];
+        $testcaseModel->headers = $params['headers'];
+        $testcaseModel->params = $params['params'];
+        if ($testcaseModel->save()){
+            return '新增成功';
+        }
+        return '新增失败';
+    }
+
+    // 将字符串转化成数组
+    protected function stringToArr($str){
+        $res = array();
+        $str = str_replace('"','',$str);
+        $str = str_replace('\'','',$str);
+        $str = str_replace('{','',$str);
+        $str = str_replace('}','',$str);
+        $tmp_arr = explode(';',$str);
+        foreach ($tmp_arr as $val){
+            $tmp = explode(':',$val);
+            $res[$tmp[0]] = $tmp[1];
+        }
+        return $res;
     }
 }

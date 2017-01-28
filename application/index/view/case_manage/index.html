@@ -10,8 +10,14 @@
         <div class="add_case_form">
             <form class="layui-form layui-form-pane" onsubmit="return false">
                 <div class="layui-form-item">
+                    <label class="layui-form-label">用例名称</label>
+                    <div class="layui-input-block">
+                        <input class="layui-input" name="caseName" type="text" placeholder="用例名称">
+                    </div>
+                </div>
+                <div class="layui-form-item">
                     <label class="layui-form-label">接口地址</label>
-                    <div class="layui-inline">
+                    <div class="layui-input-block">
                         <input class="layui-input" name="url" type="text" placeholder="http://www.baidu.com">
                     </div>
                 </div>
@@ -25,21 +31,24 @@
                     </div>
                     <div class="layui-input-inline">
                         <select name="contenttype" class="layui-select">
-                            <option>application/x-www-form-urlencoded</option>
+                            <option value="1">application/x-www-form-urlencoded</option>
+                            <option value="2">multipart/form-data</option>
+                            <option value="3">application/json</option>
+                            <option value="4">text/xml</option>
                         </select>
                     </div>
                 </div>
                 <div class="layui-form-item">
                     <label class="layui-form-label">请求头</label>
-                    <textarea class="layui-textarea" name="headers"></textarea>
+                    <textarea class="layui-textarea" name="headers" placeholder="{'Content-type':'application/json'}"></textarea>
                 </div>
                 <div class="layui-form-item">
                     <label class="layui-form-label">请求参数</label>
-                    <textarea class="layui-textarea" name="headers"></textarea>
+                    <textarea class="layui-textarea" name="params" placeholder="{'name':'xiaoshitou';'id':'2'}"></textarea>
                 </div>
                 <div class="layui-form-item">
                     <button class="layui-btn layui-btn-radius layui-btn-small" onclick="execCase()">执行用例</button>
-                    <button class="layui-btn layui-btn-radius layui-btn-normal layui-btn-small">添加用例</button>
+                    <button class="layui-btn layui-btn-radius layui-btn-normal layui-btn-small" onclick="addCase()">添加用例</button>
                     <input type="reset" class="layui-btn layui-btn-primary layui-btn-radius layui-btn-small" value="重置用例">
                 </div>
             </form>
@@ -78,6 +87,7 @@
 //    $('div.left').height(height);
     $('div.right').width(width -5);
 //    $('div.right').height(height);
+    // 执行测试用例
     function execCase() {
         $.post('getMyCurl',{
             id:'1'
@@ -87,6 +97,27 @@
             $('#requestHeader').val(data['requestHeader']);
             $('#responseHeader').val(data['responseHeader']);
         });
+    }
+    
+    // 添加测试用例
+    function addCase() {
+        var caseName = $('div.add_case_form input[name="caseName"]').val();
+        var url = $('div.add_case_form input[name="url"]').val();
+        var method = $('div.add_case_form select[name="method"]').val();
+        var contenttype = $('div.add_case_form select[name="contenttype"]').val();
+        var headers = $('div.add_case_form textarea[name="headers"]').val();
+        var params = $('div.add_case_form textarea[name="params"]').val();
+
+        $.post('addTestCase',{
+            caseName:caseName,
+            url:url,
+            method:method,
+            contenttype:contenttype,
+            headers:headers,
+            params:params
+        },function (data) {
+            alert(data);
+        })
     }
 </script>
 {/block}
