@@ -11,8 +11,16 @@
             <form class="layui-form layui-form-pane" onsubmit="return false">
                 <div class="layui-form-item">
                     <label class="layui-form-label">用例名称</label>
-                    <div class="layui-input-block">
+                    <div class="layui-input-inline">
                         <input class="layui-input" name="caseName" type="text" placeholder="用例名称">
+                    </div>
+                    <label class="layui-form-label">优先级</label>
+                    <div class="layui-input-inline">
+                        <select name="level" class="layui-form-select">
+                            <option value="1">高</option>
+                            <option value="2">中</option>
+                            <option value="3">低</option>
+                        </select>
                     </div>
                 </div>
                 <div class="layui-form-item">
@@ -107,6 +115,7 @@
         var contenttype = $('div.add_case_form select[name="contenttype"]').val();
         var headers = $('div.add_case_form textarea[name="headers"]').val();
         var params = $('div.add_case_form textarea[name="params"]').val();
+        var level = $('div.add_case_form select[name="level"]').val();
 
         $.post('addTestCase',{
             caseName:caseName,
@@ -114,9 +123,10 @@
             method:method,
             contenttype:contenttype,
             headers:headers,
-            params:params
+            params:params,
+            level:level
         },function (data) {
-            alert(data);
+            showMessage(data['message']);
         })
     }
 </script>

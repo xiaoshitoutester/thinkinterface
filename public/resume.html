@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>路松华</title>
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <!--<link rel="stylesheet" href="mycss.css">-->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            background: url("bgpicture.jpg");
+            background-size: cover;
+            /*font-family: STLiti;*/
+            font-size: 18px;
+            color: white;
+        }
+        /*.mycontent {*/
+        /*margin-top: 50px;*/
+        /*}*/
+        /*个人信息展示导航*/
+        .myMessageNav {
+            height: 60px;
+            font-size: 22px;
+            text-align: center;
+        }
+        .myMessageNav ul{
+            list-style: none;
+        }
+        .myMessageNav li {
+            float: left;
+            line-height: 60px;
+        }
+        /*导航*/
+        .mynav {
+            background-color: rgba(0,0,0,0.1);
+        }
+        .mynav ul{
+            list-style: none;
+        }
+        .menu {
+            line-height: 40px;
+            text-align: center;
+        }
+        .menu a {
+            text-decoration: none;
+            color: white;
+            display: block;
+            height: 40px;;
+            font-size: 22px;
+        }
+        .menu a:hover {
+            background-color: rgba(0,0,0,0.1);
+            color: blue;
+        }
+        /*个人信息*/
+        form {
+            color: black;
+        }
+        form input {
+            text-align: center;
+        }
+        .content {
+            font-size: 22px;
+        }
+    </style>
+</head>
+<body>
+<div class="container mycontent">
+    <div class="row">
+        <!--个人信息-->
+        <div class="myMessageNav">
+            <ul>
+                <li class="txtMsg col-md-2 col-md-offset-5">
+                    <i class="glyphicon glyphicon-user"></i>&nbsp;路松华
+                </li>
+                <li class="txtMsg col-md-2">
+                    <i class="glyphicon glyphicon-phone"></i>&nbsp;13524781846
+                </li>
+                <li class="txtMsg col-md-3">
+                    <i class="glyphicon glyphicon-envelope"></i>&nbsp;2500931932@qq.com
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="row">
+        <!--导航开始-->
+        <div class="col-md-2 mynav">
+            <ul>
+                <li class="menu">
+                    <a href="javascript:void(0);" onclick="showUserMsg()" id="indexContent">个人信息</a>
+                </li>
+                <li class="menu">
+                    <a href="javascript:void(0);" onclick="showSkill()" id="indexSkill">职业技能</a>
+                </li>
+                <li class="menu">
+                    <a href="javascript:void(0);" onclick="showJob()" id="indexJob">工作经历</a>
+                </li>
+                <li class="menu">
+                    <a href="javascript:void(0);" onclick="showStudents()" id="indexStudents">教育背景</a>
+                </li>
+            </ul>
+        </div>
+        <!--导航结束-->
+        <!--右边的显示内容-->
+        <div class="col-md-10">
+            <div class="content col-md-offset-1">
+            </div>
+        </div>
+    </div>
+</div>
+<!--个人信息-->
+<div id="userMsg" style="display: none">
+    <form onsubmit="return false;" class="">
+        <div class="form-group">
+            <label>姓名:</label>
+            <input type="text" value="路松华" disabled>
+            <label>性别:</label>
+            <input type="text" value="男" disabled>
+        </div>
+        <div class="form-group">
+            <label>年龄:</label>
+            <input type="text" value="25" disabled>
+            <label>学历:</label>
+            <input type="text" value="本科" disabled>
+        </div>
+        <div class="form-group">
+            <label>手机:</label>
+            <input type="text" value="13524781846" disabled>
+            <label>邮箱:</label>
+            <input type="text" value="2500931932@qq.com" disabled>
+        </div>
+        <div class="form-group">
+            <label>应聘:</label>
+            <input type="text" value="测试工程师" disabled>
+        </div>
+    </form>
+</div>
+<!--职业技能-->
+<div id="skill" style="display: none">
+    <ol>
+        <li>熟练掌握软件测试的基础理论知识以及软件测试流程;</li>
+        <li>熟练掌握系统测试计划、系统测试用例、系统测试报告的编写;</li>
+        <li>熟练掌握测试用例设计的方法，如：等价类边界值、正交实验法、流程分析法、判定表;</li>
+        <li>熟悉常用的BUG跟踪管理工具，如bugfree、redmine;</li>
+        <li>熟悉基本的SQL语句，如数据的增、删、改、查以此来辅助测试工作;</li>
+        <li>熟悉Linux系统的基本操作命令，能搭建测试环境;</li>
+        <li>熟悉PHP、Python编程语言；能利用PHP编写简单的前端和后台，利用Python编写自动化测试脚本;</li>
+        <li>熟悉自动化测试工具Selenium、Jmeter;</li>
+        <li>了解前端知识，如HTML、CSS、JavaScript;</li>
+        <li>了解http协议,接口测试。</li>
+    </ol>
+</div>
+<!--工作经验-->
+<div id="job" style="display: none;">
+    <ul>
+        <li>2015.3——2016.4 &nbsp;&nbsp; 宁波普天通信技术有限公司 &nbsp;&nbsp; 测试工程师</li>
+        <li>2016.4——至今 &nbsp;&nbsp; 上海爱会客信息科技有限公司 &nbsp;&nbsp; 测试工程师</li>
+    </ul>
+    <p>
+        项目名称：直通车项目<br>
+        项目介绍：该系统是一个关于同城网络配送的快递平台。<br>
+        在该项目中的主要工作内容：<br>
+        一、负责WEB端迭代版本的功能测试；<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        1、进行需求的评审，分析，整理各个功能的测试要点；<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        2、根据测试要点执行测试任务；<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        3、发现缺陷、跟踪，并且积极跟开发，产品人员沟通，直到问题解决。<br>
+        二、负责本系统Ui自动化测试脚本开发和维护；<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        1、搭建Ui自动化测试框架(Python+Selenium+Unittest+ HTMLTestRunner)；<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        2、完成对本系统主要流程自动化脚本的开发；<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        3、对自动化脚本进行维护，输出测试报告；<br>
+        三、负责对系统的主要接口进行压力测试。<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        1、编写脚本进行生成测试数据；<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        2、使用Jmeter进行测试任务；<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        3、输出相应的测试报告；配合开发架构师进行性能调优。<br>
+        四、对其它部门反馈关于系统方面的问题和建议，及时进行跟踪、处理和汇报。<br>
+    </p>
+</div>
+<!--显示教育背景-->
+<div id="Students" style="display: none;">
+    <ul>
+        <li>2011年09月-2015年06月 &nbsp;&nbsp; 四川师范大学成都学院 &nbsp;&nbsp; 自动化专业</li>
+        <li>2014年10月-2015年02月 &nbsp;&nbsp; 51testing (成都)  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 软件测试的培训</li>
+    </ul>
+</div>
+<script>
+    // 自动click个人信息
+    $(document).ready(function () {
+        $('#indexContent').trigger('click');
+    });
+//    显示个人信息
+    function showUserMsg() {
+        resetColor();
+        $('#indexContent').css('color','red');
+        $('div.content').html($('#userMsg').html());
+    }
+//    显示职业技能
+    function showSkill() {
+        resetColor();
+        $('#indexSkill').css('color','red');
+        $('div.content').html($('#skill').html());
+    }
+//    显示工作经验
+    function showJob() {
+        resetColor();
+        $('#indexJob').css('color','red');
+        $('div.content').html($('#job').html());
+    }
+//    显示教育背景
+    function showStudents() {
+        resetColor();
+        $('#indexStudents').css('color','red');
+        $('div.content').html($('#Students').html());
+    }
+//    初始化a标签的颜色,变为白色
+    function resetColor() {
+        $('#indexContent').css('color','white');
+        $('#indexSkill').css('color','white');
+        $('#indexJob').css('color','white');
+        $('#indexStudents').css('color','white');
+    }
+</script>
+</body>
+</html>

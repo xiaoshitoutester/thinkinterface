@@ -1,0 +1,59 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+body {
+    background: url("bgpicture.jpg");
+    background-size: cover;
+    /*font-family: STLiti;*/
+    font-size: 18px;
+    color: white;
+}
+/*.mycontent {*/
+    /*margin-top: 50px;*/
+/*}*/
+/*个人信息展示导航*/
+.myMessageNav {
+    height: 60px;
+    font-size: 22px;
+    text-align: center;
+}
+.myMessageNav ul{
+    list-style: none;
+}
+.myMessageNav li {
+    float: left;
+    line-height: 60px;
+}
+/*导航*/
+.mynav {
+    background-color: rgba(0,0,0,0.1);
+}
+.mynav ul{
+    list-style: none;
+}
+.menu {
+    line-height: 40px;
+    text-align: center;
+}
+.menu a {
+    text-decoration: none;
+    color: white;
+    display: block;
+    height: 40px;;
+    font-size: 22px;
+}
+.menu a:hover {
+    background-color: rgba(0,0,0,0.1);
+    color: blue;
+}
+/*个人信息*/
+form {
+    color: black;
+}
+form input {
+    text-align: center;
+}
+.content {
+    font-size: 22px;
+}

@@ -67,6 +67,7 @@ class CaseManage extends Index
         $params['contenttype'] = input('contenttype');
         $params['headers'] = input('headers');
         $params['params'] = input('params');
+        $params['level'] = input('level');
         $testcaseModel =  new TestcasModel();
         $testcaseModel->name = $params['caseName'];
         $testcaseModel->url = $params['url'];
@@ -74,10 +75,15 @@ class CaseManage extends Index
         $testcaseModel->contenttype = $params['contenttype'];
         $testcaseModel->headers = $params['headers'];
         $testcaseModel->params = $params['params'];
+        $testcaseModel->level = $params['level'];
         if ($testcaseModel->save()){
-            return '新增成功';
+            $res['code'] = 200;
+            $res['message'] = '新增用例成功';
+            return json($res);
         }
-        return '新增失败';
+        $res['code'] = 500;
+        $res['message'] = '新增用例失败';
+        return json($res);
     }
 
     // 将字符串转化成数组
